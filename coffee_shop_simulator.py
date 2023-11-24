@@ -1,7 +1,7 @@
 import pickle
-import random
 import re
 import numpy
+import secrets
 
 class CoffeeShopSimulator:
 
@@ -162,10 +162,10 @@ class CoffeeShopSimulator:
 
     def daily_sales(self, temperature, advertising, cup_price):
         # Randomize advertising effectiveness
-        adv_coefficient = random.randint(20, 80) / 100
+        adv_coefficient = secrets.SystemRandom().randint(20, 80) / 100
 
         # Higher priced coffee doesn't sell as well
-        price_coefficient = int((cup_price * (random.randint(50, 250) / 100)))
+        price_coefficient = int((cup_price * (secrets.SystemRandom().randint(50, 250) / 100)))
 
         # Run the sales figures!
         sales = int((self.TEMP_MAX - temperature) * (advertising * adv_coefficient))
@@ -186,7 +186,7 @@ class CoffeeShopSimulator:
     def weather(self):
         # Generate a random temperature between 20 and 90
         # We'll consider seasons later on, but this is good enough for now
-        return int(random.choice(self.temps))
+        return int(secrets.SystemRandom().choice(self.temps))
 
     @staticmethod
     def prompt(display="Please input a string", require=True):
