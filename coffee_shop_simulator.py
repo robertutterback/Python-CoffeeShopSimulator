@@ -66,9 +66,8 @@ class CoffeeShopSimulator:
 
             # Do they want to buy more coffee inventory?
             print("\nIt costs $1 for the necessary inventory to make a cup of coffee.")
-            response = self.prompt("Want to buy more so you can make more coffee? (ENTER for none or enter number)", False)
 
-            if response:
+            if response := self.prompt("Want to buy more so you can make more coffee? (ENTER for none or enter number)", False):
                 if not self.buy_coffee(response):
                     print("Could not buy additional coffee.")
 
